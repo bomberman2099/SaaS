@@ -1,12 +1,15 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>{% block head_title %}SasS{% endblock %}</title>
+    {% include 'includes/base/css.html' %}
 </head>
 <body>
-    {% block content %}
-    {% endblock %}
-
+{% include 'includes/nav/navbar.html' %}
+{% block content %}
+{% endblock %}
+{% include 'includes/base/javascripts.html' %}
 </body>
 </html>
