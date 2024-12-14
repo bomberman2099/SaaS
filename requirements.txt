@@ -3,6 +3,7 @@ gunicorn
 python-decouple
 psycopg[binary]
 dj-database-url
+requests
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
