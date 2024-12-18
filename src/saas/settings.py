@@ -37,6 +37,7 @@ if DEBUG:
     ]
 
 
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,6 +49,11 @@ INSTALLED_APPS = [
 
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
     # my_apps
     'cfehome.apps.CfehomeConfig',
     'visits.apps.VisitsConfig',
@@ -63,6 +69,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    "allauth.account.middleware.AccountMiddleware",
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -83,8 +90,23 @@ TEMPLATES = [
         },
     },
 ]
-
 WSGI_APPLICATION = 'saas.wsgi.application'
+
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_AUTHENTICATION_METHOD = 'email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_EMAIL_SUBJECT_PREFIX= " my perfect SaaS web"
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by email
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+
+
 
 
 # Email config
@@ -148,6 +170,11 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
+
+
+# Provider specific settings
+SOCIALACCOUNT_PROVIDERS = {
+}
 
 
 # Internationalization

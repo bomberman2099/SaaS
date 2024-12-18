@@ -5,6 +5,7 @@ psycopg[binary]
 dj-database-url
 requests
 whitenoise
+django-allauth[socialaccount]
 # DATABASES = {
 #     'default': {
 #         'ENGINE': 'django.db.backends.sqlite3',
