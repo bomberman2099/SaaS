@@ -51,7 +51,8 @@ INSTALLED_APPS = [
     # my_apps
     'cfehome.apps.CfehomeConfig',
     'visits.apps.VisitsConfig',
-    'commando.apps.CommandoConfig'
+    'commando.apps.CommandoConfig',
+    'users.apps.UsersConfig',
 ]
 
 MIDDLEWARE = [
