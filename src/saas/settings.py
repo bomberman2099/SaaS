@@ -16,7 +16,6 @@ from pathlib import Path
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
 
@@ -36,8 +35,6 @@ if DEBUG:
         "localhost"
     ]
 
-
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -55,9 +52,8 @@ INSTALLED_APPS = [
     "allauth",
     "allauth.account",
     "allauth.socialaccount",
-    "allauth.socialaccount.providers.github",
+    'allauth.socialaccount.providers.github',
     "widget_tweaks",
-    "slippers",
 
     # my_apps
     'cfehome.apps.CfehomeConfig',
@@ -74,7 +70,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    "allauth.account.middleware.AccountMiddleware",
+    "allauth.account.middleware.AccountMiddleware",  # allauth
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
@@ -101,7 +97,7 @@ LOGIN_REDIRECT_URL = '/'
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_EMAIL_REQUIRED = True
 ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
-ACCOUNT_EMAIL_SUBJECT_PREFIX= " my perfect SaaS web"
+ACCOUNT_EMAIL_SUBJECT_PREFIX = " my perfect SaaS web"
 AUTHENTICATION_BACKENDS = [
     # Needed to login by username in Django admin, regardless of `allauth`
     'django.contrib.auth.backends.ModelBackend',
@@ -110,30 +106,25 @@ AUTHENTICATION_BACKENDS = [
     'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
-
-
-
-
 # Email config
 EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
 EMAIL_HOST = config("EMAIL_HOST", cast=str, default="smtp.gmail.com")
-EMAIL_PORT = config("EMAIL_PORT", cast=str, default="587") #
+EMAIL_PORT = config("EMAIL_PORT", cast=str, default="587")  #
 EMAIL_HOST_USER = config("EMAIL_HOST_USER", cast=str, default=None)
 EMAIL_HOST_PASSWORD = config("EMAIL_HOST_PASSWORD", cast=str, default=None)
 EMAIL_USE_TLS = config("EMAIL_USE_TLS", cast=bool, default=True)
 EMAIL_USE_SSL = config("EMAIL_USE_SSL", cast=bool, default=False)
-ADMIN_USER_NAME=config("ADMIN_USER_NAME", default="Admin user")
-ADMIN_USER_EMAIL=config("ADMIN_USER_EMAIL", default=None)
+ADMIN_USER_NAME = config("ADMIN_USER_NAME", default="Admin user")
+ADMIN_USER_EMAIL = config("ADMIN_USER_EMAIL", default=None)
 
-
-MANAGERS=[]
-ADMINS=[]
+MANAGERS = []
+ADMINS = []
 if all([ADMIN_USER_NAME, ADMIN_USER_EMAIL]):
     # 500 errors are emailed to these users
-    ADMINS +=[
+    ADMINS += [
         (f'{ADMIN_USER_NAME}', f'{ADMIN_USER_EMAIL}')
     ]
-    MANAGERS=ADMINS
+    MANAGERS = ADMINS
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -149,6 +140,7 @@ DATABASE_URL = config("DATABASE_URL", default=None)
 
 if DATABASE_URL is not None:
     import dj_database_url
+
     DATABASES = {
         "default": dj_database_url.config(
             default=DATABASE_URL,
@@ -156,7 +148,6 @@ if DATABASE_URL is not None:
             conn_health_checks=True,
         )
     }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/5.1/ref/settings/#auth-password-validators
@@ -176,11 +167,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
 # Provider specific settings
 SOCIALACCOUNT_PROVIDERS = {
+    'github': {
+        'APP': {
+            'client_id': '',
+            'secret': '',
+        },
+        "VERIFIED_EMAIL": True
+    }
 }
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
@@ -192,7 +188,6 @@ TIME_ZONE = 'UTC'
 USE_I18N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
