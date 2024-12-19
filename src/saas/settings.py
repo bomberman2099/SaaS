@@ -46,13 +46,18 @@ INSTALLED_APPS = [
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
-    'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+    # Third-party-apps
+
+    "allauth_ui",
+    "allauth",
+    "allauth.account",
+    "allauth.socialaccount",
+    "allauth.socialaccount.providers.github",
+    "widget_tweaks",
+    "slippers",
 
     # my_apps
     'cfehome.apps.CfehomeConfig',

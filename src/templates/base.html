@@ -8,6 +8,7 @@
 </head>
 <body>
 {% include 'includes/nav/navbar.html' %}
+{% include 'includes/messages.html' with messages=messages%}
 {% block content %}
 {% endblock %}
 {% include 'base/javascripts.html' %}
