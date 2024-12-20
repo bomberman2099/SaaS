@@ -30,6 +30,7 @@
         <option value="$MODULE_DIR$/cfehome/templates" />
         <option value="$MODULE_DIR$/templates" />
         <option value="$MODULE_DIR$/users/templates" />
+        <option value="$MODULE_DIR$/profiles/templates" />
       </list>
     </option>
   </component>

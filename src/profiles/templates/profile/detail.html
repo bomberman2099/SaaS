@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% block head_title %}
+    {{ page_title }} | {{ block.super }}
+{% endblock %}
+{% block content %}
+    {% if perms.auth.view_user or is_me %}
+    	
+    
+    <h1>{{ instance.username }}</h1>
+    <div>
+    {{ instance.first_name }} - {{ instance.last_name }}
+    {{ instance.last_login }}
+    
+    </div>
+        {% else %}
+        <h1>you are not Allowed to see this bitch get the fuck out the here.</h1>
+    {% endif %} 
+{% endblock %}
