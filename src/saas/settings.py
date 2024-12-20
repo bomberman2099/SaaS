@@ -60,6 +60,7 @@ INSTALLED_APPS = [
     'visits.apps.VisitsConfig',
     'commando.apps.CommandoConfig',
     'users.apps.UsersConfig',
+    'profiles.apps.ProfilesConfig',
 ]
 
 MIDDLEWARE = [
