@@ -61,6 +61,7 @@ INSTALLED_APPS = [
     'commando.apps.CommandoConfig',
     'users.apps.UsersConfig',
     'profiles.apps.ProfilesConfig',
+    'subscriptions.apps.SubscriptionsConfig',
 ]
 
 MIDDLEWARE = [

@@ -15,6 +15,14 @@ def profile_list_view(request):
 
 def profile_details_view(request, username):
     user = request.user
+    print(user.has_perm('subscription.basic'))
+    print(user.has_perm('subscription.basic_ai'))
+    print(user.has_perm('subscription.pro'))
+    print(user.has_perm('subscription.advanced'))
+    # user__groups = user.groups.all()
+    # print("user__groups", user__groups)
+    # if user__groups.filter(name__contains='basic').exists():
+    #     return HttpResponse("You're a basic user!")
     print(user.has_perm("auth.view_user"))
     print(user.has_perm("visits.view_pagevisit"))
     profile_user_obj = get_object_or_404(User, username=username)
